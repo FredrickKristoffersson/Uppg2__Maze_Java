@@ -113,13 +113,19 @@ public class Maze {
         return maze.get(y).get(x).equals("F");
     }
 
-    public void displayMaze(Player player) {
+    public boolean isBitByMonster(int playerX, int playerY, int monsterX, int monsterY) {
+        return playerX == monsterX && playerY == monsterY;
+    }
+
+    public void displayMaze(Player player, Monster demon) {
         for (int i = 0; i < maze.size(); i++) {
             for (int j = 0; j < maze.get(i).size(); j++) {
                 if (i == player.getY() && j == player.getX()) {
-                    System.out.print('P' + " ");
+                    System.out.print('P' + " ");  // Visa spelaren
+                } else if (i == demon.getY() && j == demon.getX()) {
+                    System.out.print('M' + " ");  // Visa monstret
                 } else {
-                    System.out.print(maze.get(i).get(j) + " ");
+                    System.out.print(maze.get(i).get(j) + " ");  // Visa labyrinten
                 }
             }
             System.out.println();
